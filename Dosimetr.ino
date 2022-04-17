@@ -34,7 +34,7 @@ TFT_eSPI tft     = TFT_eSPI();
 HV_Controller      hv_controller(MOSFET_PIN, ADC_PIN);
 SoundNotification  soundDevice(DEVICE_SOUND);
 GUI                ui(&tft);
-DosimetrController DosimetrController(&hv_controller, &ui, &soundDevice);
+DosimetrController dosimetrController(&hv_controller, &ui, &soundDevice);
 
 void setup()
 {
