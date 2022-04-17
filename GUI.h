@@ -8,6 +8,13 @@ public:
   GUI() = delete;
   GUI(TFT_eSPI *tft):m_pTFT(tft) {}
 
+  #ifdef DEBUG_MODE
+  void test()
+  {
+    // ui
+  }
+  #endif
+
 private:
   TFT_eSPI *m_pTFT = nullptr;
 };

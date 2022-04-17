@@ -43,10 +43,17 @@ void setup()
   hv_controller.set_isWork(false);
   hv_controller.set_targetVoltage(400);
   hv_controller.set_frequency(20000); // hz
+  hv_controller.set_dutycycle(0.5); // percent
   hv_controller.set_threshold(5); // percent +- possible deviation voltage
 
   soundDevice.set_volume(70); // percent
   soundDevice.set_frequency(10000); // hz
+
+  #ifdef DEBUG_MODE
+  hv_controller.test();
+  soundDevice.test();
+  ui.test();
+  #endif
 }
 
 void loop()

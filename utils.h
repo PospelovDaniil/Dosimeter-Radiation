@@ -1,6 +1,8 @@
-extern "C" {
+extern "C"
+{
 #include "user_interface.h"
 }
+#include <Arduino.h>
 
 #define CLASS_PROPERTY(type, var)                                \
   private:                                                       \
