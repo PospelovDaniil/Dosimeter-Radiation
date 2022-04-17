@@ -1,3 +1,7 @@
+extern "C" {
+#include "user_interface.h"
+}
+
 #define CLASS_PROPERTY(type, var)                                \
   private:                                                       \
     type m_##var;                                                \
@@ -5,7 +9,7 @@
     type get_##var()            const noexcept { return m_##var;}\
     void set_##var(const type &value) noexcept { m_##var = value;}
 
-#define zero(p_var)\
+#define CLEAN(p_var)\
   memset(p_var, 0, sizeof(*p_var));
 
 #ifdef ESP8266

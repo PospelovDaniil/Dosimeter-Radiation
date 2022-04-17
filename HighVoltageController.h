@@ -1,14 +1,30 @@
 #include <stdint.h>
 #include "utils.h"
+#include <Arduino.h>
 
 class HV_Controller
 {
 public:
   HV_Controller() = delete;
-  HV_Controller(uint8_t mosfetPin):m_mosfetPin(mosfetPin) {}
+  HV_Controller(const uint8_t mosfetPin, const uint8_t ADCPin):m_mosfetPin(mosfetPin), m_ADCPin(ADCPin)
+  {
+    CLEAN(&m_targetVoltage);
+    CLEAN(&m_frequency);
+    CLEAN(&m_dutycycle);
+    CLEAN(&m_threshold);
+  }
 
-  CLASS_PROPERTY(uint8_t, mosfetPin)
+  void task_work() noexcept;
+
+  CLASS_PROPERTY(bool, isWork)
+  // generate hv
+  CLASS_PROPERTY(uint8_t,  mosfetPin)
   CLASS_PROPERTY(uint16_t, targetVoltage)
   CLASS_PROPERTY(uint16_t, frequency)
-  CLASS_PROPERTY(bool, isWork)
+  CLASS_PROPERTY(uint16_t, dutycycle)
+  
+  // control voltage
+  CLASS_PROPERTY(uint8_t, ADCPin)
+  CLASS_PROPERTY(uint8_t, threshold)
+  inline uint16_t get_ADCValue() const noexcept;
 };

@@ -5,7 +5,11 @@ class SoundNotification
 {
 public:
   SoundNotification() = delete;
-  SoundNotification(const uint8_t devicePin):m_devicePin(devicePin) {}
+  SoundNotification(const uint8_t devicePin):m_devicePin(devicePin)
+  {
+    CLEAN(&m_volume);
+    CLEAN(&m_frequency);
+  }
 
   void play_s(  uint8_t duration_play) const;
   void play_ms(uint16_t duration_play) const;
