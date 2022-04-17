@@ -21,6 +21,7 @@ public:
     #ifdef ESP8266
     m_dutycycle = map(dutycycle, 0, 100, 0, 1023); // its no std::map, arduino spec foo
     #elif defined ESP32
+    m_dutycycle = map(dutycycle, 0, 100, 0, 4095); // its no std::map, arduino spec foo
     #endif
   }
 
