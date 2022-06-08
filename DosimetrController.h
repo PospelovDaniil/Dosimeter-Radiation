@@ -4,16 +4,6 @@
 #include "SoundNotification.h"
 #include "GUI.h"
 
-enum class GeigerCounter:uint8_t
-{
-  SBM_20 = 0,
-  SBM_20_1,
-  BETA_1,
-  BETA_1_1,
-  BETA_2,
-  BETA_2_1
-};
-
 class DosimetrController
 {
 public:
@@ -25,4 +15,3 @@ private:
   GUI               *ui    = nullptr;
   SoundNotification *sound = nullptr;
 };
-

@@ -29,7 +29,6 @@
   #define SW_WIFI_OFF              0
 #endif
 
-GeigerCounter g_cnt = GeigerCounter::SBM_20_1;
 
 TFT_eSPI tft     = TFT_eSPI();
 HV_Controller      hv_controller(MOSFET_PIN, ADC_PIN);
@@ -42,15 +41,9 @@ void setup()
   Serial.begin(115200);
 
   hv_controller.set_isWork(false);
-  switch(g_cnt)
-  {
-    case GeigerCounter::SBM_20:   hv_controller.set_targetVoltage(400); break;
-    case GeigerCounter::SBM_20_1: hv_controller.set_targetVoltage(400); break;
-    default: hv_controller.set_targetVoltage(0);
-  }
-  
+  hv_controller.set_targetVoltage(400);
   hv_controller.set_frequency(20000); // hz
-  hv_controller.set_dutycycle(1); // range 0-100 aka percent
+  hv_controller.set_dutycycle(1); // range 0-100
   hv_controller.set_threshold(15); // volt +- possible deviation voltage
 
   soundDevice.set_volume(70); // percent
